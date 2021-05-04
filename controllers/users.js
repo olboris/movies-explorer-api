@@ -45,12 +45,10 @@ module.exports.updateUser = (req, res, next) => {
     });
 };
 
-/*module.exports.createUser = (req, res, next) => {
+module.exports.createUser = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
     .then((hash) => User.create({
       name: req.body.email,
-      about: req.body.about,
-      avatar: req.body.avatar,
       email: req.body.email,
       password: hash,
     }))
@@ -60,8 +58,6 @@ module.exports.updateUser = (req, res, next) => {
           res.send({
             _id: user._id,
             name: user.name,
-            about: user.about,
-            avatar: user.avatar,
             email: user.email,
           });
         });
@@ -103,4 +99,4 @@ module.exports.login = (req, res, next) => {
       }));
     })
     .catch(next);
-};*/
+};
