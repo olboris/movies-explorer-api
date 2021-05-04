@@ -14,10 +14,10 @@ const { errors } = require('celebrate');
 } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const errorsHandler = require('./middlewares/errors');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { requestLogger, errorLogger } = require('./middlewares/logger');*/
 const userRouter = require('./routes/users');
-const cardRouter = require('./routes/cards');
-const { notFound } = require('./controllers/not-found-error');*/
+const movieRouter = require('./routes/movies');
+/*const { notFound } = require('./controllers/not-found-error');*/
 
 const { PORT = 3000 } = process.env;
 
@@ -70,10 +70,10 @@ app.use(limiter);
 app.use(helmet());
 app.use(requestLogger);
 
-/*app.use('/users', auth, userRouter);
-app.use('/cards', auth, cardRouter);
+app.use('/users', auth, userRouter);
+app.use('/movies', auth, movieRouter);
 
-app.post('/signin', celebrate({
+/*app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required(),
