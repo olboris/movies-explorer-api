@@ -41,6 +41,7 @@ module.exports.createMovie = (req, res, next) => {
     .then((movie) => res.send({ data: movie }))
     .catch((err) => {
       let error;
+      console.log(err);
       if (err.name === 'ValidationError') {
         error = new BadRequestError('Ошибка валидации');
       }
