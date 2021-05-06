@@ -21,13 +21,13 @@ const { notFound } = require('./controllers/not-found-error');
 
 const { PORT = 3000 } = process.env;
 
-/*const whitelist = [
-  'https://mesto.olboris.students.nomoredomains.club',
-  'http://mesto.olboris.students.nomoredomains.club',
+const whitelist = [
+  'https://movies-explorer.olboris.nomoredomains.icu',
+  'http://movies-explorer.olboris.nomoredomains.icu',
   'http://localhost:3000',
 ];
 
-/*const corsOptions = {
+const corsOptions = {
   origin(origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
@@ -38,7 +38,7 @@ const { PORT = 3000 } = process.env;
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
   credentials: true,
-};*/
+};
 
 const app = express();
 
