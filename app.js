@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-/* const cors = require('cors'); */
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
@@ -56,7 +56,7 @@ app.use((req, res, next) => {
   next();
 });
 
-/* app.use(cors(corsOptions)); */
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
