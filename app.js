@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-/* const cors = require('cors'); */
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
@@ -21,7 +21,7 @@ const { notFound } = require('./controllers/not-found-error');
 
 const { PORT = 3000 } = process.env;
 
-const whitelist = [
+/* const whitelist = [
   'https://movies-explorer.olboris.nomoredomains.icu',
   'http://movies-explorer.olboris.nomoredomains.icu',
   'http://localhost:3000',
@@ -56,14 +56,15 @@ mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
   next();
 }); */
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
-});
+}); */
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
