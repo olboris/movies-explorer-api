@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-const cors = require('cors');
+/* const cors = require('cors'); */
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
@@ -27,7 +27,7 @@ const whitelist = [
   'http://localhost:3000',
 ];
 
-const corsOptions = {
+/* const corsOptions = {
   origin(origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
@@ -38,7 +38,7 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
   credentials: true,
-};
+}; */
 
 const app = express();
 
@@ -51,12 +51,15 @@ mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
 });
 
 app.use((req, res, next) => {
-  res.header({ 'Access-Control-Allow-Origin': '*' });
+  const { origin } = req.headers;
+  if (whitelist.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   next();
 });
 
-app.use(cors(corsOptions));
+/* app.use(cors(corsOptions)); */
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
