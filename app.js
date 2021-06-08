@@ -27,7 +27,7 @@ const whitelist = [
   'http://localhost:3000',
 ];
 
-/* const corsOptions = {
+const corsOptions = {
   origin(origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
@@ -38,7 +38,7 @@ const whitelist = [
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
   credentials: true,
-}; */
+};
 
 const app = express();
 
@@ -56,7 +56,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
