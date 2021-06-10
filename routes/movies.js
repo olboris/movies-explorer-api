@@ -15,24 +15,14 @@ router.post('/', celebrate({
     duration: Joi.number().required().integer(),
     year: Joi.string().required(),
     description: Joi.string().required(),
-    image: Joi.string().required().custom((value, helper) => {
-      if (isUrl(value)) {
-        return value;
-      }
-      return helper.message('Неверно введена ссылка на постер к фильму');
-    }),
+    image: Joi.string().required(),
     trailer: Joi.string().required().custom((value, helper) => {
       if (isUrl(value)) {
         return value;
       }
       return helper.message('Неверно введена ссылка на трейлер к фильму');
     }),
-    thumbnail: Joi.string().required().custom((value, helper) => {
-      if (isUrl(value)) {
-        return value;
-      }
-      return helper.message('Неверно введена ссылка на мини-постер к фильму');
-    }),
+    thumbnail: Joi.string().required(),
     movieId: Joi.number().required().integer(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
