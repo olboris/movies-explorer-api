@@ -3,7 +3,7 @@
 ### Дипломный проект Яндекс.Практикум
 #### Ссылка на сайт - http://mesto.olboris.students.nomoredomains.club
 #### Доменное имя backend'а - http://ap.mesto.olboris.students.nomoredomains.club
-#### IP-адрес сервера - 217.28.229.240
+#### IP-адрес сервера - 217.28.229.202
 ---
 ### Описание
 Репозиторий для backend'а приложения [Movies Explorer](https://github.com/olboris/movies-explorer-frontend).
